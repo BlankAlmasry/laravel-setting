@@ -2,6 +2,7 @@
 
 [![Issues](https://img.shields.io/github/issues/michaelnabil230/laravel-setting)](https://github.com/michaelnabil230/laravel-setting/issues)
 [![Stars](https://img.shields.io/github/stars/michaelnabil230/laravel-setting)](https://github.com/michaelnabil230/laravel-setting/stargazers)
+![Forks](https://img.shields.io/github/forks/michaelnabil230/laravel-setting)
 [![License](https://img.shields.io/github/license/michaelnabil230/laravel-setting)](https://github.com/michaelnabil230/laravel-setting/blob/main/LICENSE)
 
 Persistent, application-wide settings for Laravel.
