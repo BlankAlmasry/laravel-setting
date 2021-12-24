@@ -2,7 +2,7 @@
 
 [![Issues](https://img.shields.io/github/issues/michaelnabil230/laravel-setting?style=flat&logo=appveyor)](https://github.com/michaelnabil230/laravel-setting/issues)
 [![Stars](https://img.shields.io/github/stars/michaelnabil230/laravel-setting?style=flat&logo=appveyor)](https://github.com/michaelnabil230/laravel-setting/stargazers)
-[![License](https://img.shields.io/github/license/michaelnabil230/laravel-setting?style=flat&logo=appveyor)](https://github.com/michaelnabil230/laravel-setting/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/michaelnabil230/laravel-setting?style=flat&logo=appveyor)](https://github.com/michaelnabil230/laravel-setting/blob/main/LICENSE)
 
 Persistent, application-wide settings for Laravel.
 
