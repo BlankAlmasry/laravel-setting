@@ -5,7 +5,7 @@ namespace MichaelNabil230\LaravelSetting;
 use Illuminate\Support\ServiceProvider;
 use MichaelNabil230\LaravelSetting\SettingManager;
 use MichaelNabil230\LaravelSetting\Store\SettingStore;
-use MichaelNabil230\LaravelSetting\Console\Commands\SetOrUpdateKey;
+use MichaelNabil230\LaravelSetting\Console\Commands\SetOrUpdateSetting;
 use MichaelNabil230\LaravelSetting\Console\Commands\ForgetSetting;
 use MichaelNabil230\LaravelSetting\Console\Commands\GetAllSetting;
 use MichaelNabil230\LaravelSetting\Console\Commands\GetOnlySetting;
@@ -52,7 +52,7 @@ class SettingServiceProvider extends ServiceProvider
             GetAllSetting::class,
             ForgetSetting::class,
             GetOnlySetting::class,
-            SetOrUpdateKey::class,
+            SetOrUpdateSetting::class,
         ]);
 
         if ($this->app->runningInConsole()) {

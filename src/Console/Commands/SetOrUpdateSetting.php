@@ -4,7 +4,7 @@ namespace MichaelNabil230\LaravelSetting\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class SetOrUpdateKey extends Command
+class SetOrUpdateSetting extends Command
 {
     /**
      * The name and signature of the console command.
@@ -30,7 +30,7 @@ class SetOrUpdateKey extends Command
         $key = $this->argument('key');
         $value = $this->argument('value');
 
-        setting([$key => $value])->save();
+        setting()->set($key, $value)->save();
 
         if (setting()->has($key)) {
             $this->info('inserted ' . $key . ' a new setting successfully.');
