@@ -8,9 +8,9 @@ return new class extends Migration
 {
 	public function __construct()
 	{
-		$this->tablename = config('settings.table');
-		$this->keyColumn = config('settings.keyColumn');
-		$this->valueColumn = config('settings.valueColumn');
+		$this->tablename = config('setting.table');
+		$this->keyColumn = config('setting.keyColumn');
+		$this->valueColumn = config('setting.valueColumn');
 	}
 
 	/**
@@ -38,4 +38,4 @@ return new class extends Migration
 	{
 		Schema::dropIfExists($this->tablename);
 	}
-}
+};

@@ -32,8 +32,8 @@ class JsonSettingStore extends SettingStore
      */
     public function __construct($path = null, Filesystem $files)
     {
-        $this->setPath($path);
         $this->files = $files;
+        $this->setPath($path);
     }
 
     /**
@@ -65,7 +65,7 @@ class JsonSettingStore extends SettingStore
      *
      * @param string $key
      *
-     * @return $this
+     * @return bool
      */
     public function forget($key)
     {
@@ -77,7 +77,7 @@ class JsonSettingStore extends SettingStore
 
         $this->files->put($this->path, $contents);
 
-        return $this;
+        return true;
     }
 
     /**
@@ -100,7 +100,7 @@ class JsonSettingStore extends SettingStore
     /**
      * Unset all keys in the settings data.
      *
-     * @return $this
+     * @return bool
      */
     public function forgetAll()
     {
@@ -108,7 +108,7 @@ class JsonSettingStore extends SettingStore
 
         $this->files->put($this->path, $contents);
 
-        return $this;
+        return true;
     }
 
     /**

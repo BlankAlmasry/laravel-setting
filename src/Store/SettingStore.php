@@ -108,14 +108,14 @@ abstract class SettingStore
      *
      * @param string $key
      *
-     * @return $this
+     * @return bool
      */
     abstract protected function forget($key);
 
     /**
      * Unset all keys in the settings data.
      *
-     * @return $this
+     * @return bool
      */
     abstract protected function forgetAll();
 }

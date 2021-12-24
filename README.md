@@ -13,7 +13,7 @@ Despite the package name, this package should work with Laravel 8 (though some v
 
 1. `composer require michaelnabil230/laravel-setting`
 2. Publish the config file by
-   running `php artisan vendor:publish --provider="MichaelNabil230\LaravelSetting\ServiceProvider" --tag="config"`. The
+   running `php artisan vendor:publish --provider="MichaelNabil230\LaravelSetting\SettingServiceProvider" --tag="config"`. The
    config file will give you control over which storage engine to use as well as some storage-specific settings.
 
 ## Usage
@@ -43,6 +43,14 @@ setting()->set('foo', 'bar');
 // Method chaining
 setting(['foo' => 'bar'])->save();
 ```
+### Command line helper
+
+```
+php artisan setting:forget foo
+php artisan setting:all
+php artisan setting:get foo
+php artisan setting:set-or-update foo bar
+```
 
 ### Store cache
 
@@ -64,7 +72,7 @@ Reading will come from the store, and then from the cache, this can reduce load 
 #### Using Migration File
 
 If you use the database store you need to
-run `php artisan vendor:publish --provider="MichaelNabil230\LaravelSetting\ServiceProvider" --tag="migrations"`
+run `php artisan vendor:publish --provider="MichaelNabil230\LaravelSetting\SettingServiceProvider" --tag="migrations"`
 and `php artisan migrate`
 
 ## Contact

@@ -14,11 +14,11 @@ if (!function_exists('setting')) {
      * @param string|array|null $key
      * @param string|null $default
      *
-     * @return \MichaelNabil230\LaravelSetting\SettingsManager
+     * @return \MichaelNabil230\LaravelSetting\Store\SettingStore
      */
     function setting($key = null, $default = null)
     {
-        $setting = app('setting');
+        $setting = app(MichaelNabil230\LaravelSetting\Store\SettingStore::class);
 
         if (is_array($key)) {
             $setting->set($key);

@@ -12,7 +12,7 @@ use MichaelNabil230\LaravelSetting\Store\JsonSettingStore;
  * @license  http://opensource.org/licenses/MIT
  * @package  settings-for-laravel
  */
-class SettingsManager extends Manager
+class SettingManager extends Manager
 {
 
     /**
@@ -22,21 +22,21 @@ class SettingsManager extends Manager
      */
     public function getDefaultDriver()
     {
-        return $this->config->get('settings.default', 'json');
+        return $this->config->get('setting.default', 'json');
     }
 
     public function createJsonDriver()
     {
-        $path = $this->config->get('settings.drivers.path', storage_path('settings.json'));
+        $path = $this->config->get('setting.drivers.json.path', storage_path('setting.json'));
 
-        $store = new JsonSettingStore($path, $this->container['files'],);
+        $store = new JsonSettingStore($path, $this->container['files']);
 
         return $store;
     }
 
     public function createDatabaseDriver()
     {
-        $database = $this->config->get('settings.drivers.database');
+        $database = $this->config->get('setting.drivers.database');
 
         $store = new DatabaseSettingStore($database, $this->container['cache']);
 

@@ -158,7 +158,7 @@ class DatabaseSettingStore extends SettingStore
      *
      * @param string $key
      *
-     * @return $this
+     * @return bool
      */
     public function forget($key)
     {
@@ -172,7 +172,7 @@ class DatabaseSettingStore extends SettingStore
 
         $this->cache->store()->forget(self::$cacheKey);
 
-        return $this;
+        return true;
     }
 
     /**
@@ -228,7 +228,7 @@ class DatabaseSettingStore extends SettingStore
     /**
      * Unset all keys in the settings data.
      *
-     * @return $this
+     * @return bool
      */
     public function forgetAll()
     {
@@ -236,7 +236,7 @@ class DatabaseSettingStore extends SettingStore
 
         $this->cache->store()->forget(self::$cacheKey);
 
-        return $this;
+        return true;
     }
 
     /**

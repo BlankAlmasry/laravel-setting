@@ -14,26 +14,14 @@ return [
 	| Supported: "json", "database"
 	|
 	*/
-	'default' => 'database',
+	'default' => 'json',
 
 	/*
 	|--------------------------------------------------------------------------
-	| JSON Store
+	| Drivers Store
 	|--------------------------------------------------------------------------
 	|
-	| If the store is set to "json", settings are stored in the defined
-	| file path in JSON format. Use full path to file.
-	|
-	*/
-
-
-	/*
-	|--------------------------------------------------------------------------
-	| Database Store
-	|--------------------------------------------------------------------------
-	|
-	| The settings are stored in the defined file path in JSON format.
-	| Use full path to JSON file.
+	| The settings are stored.
 	|
 	*/
 
