@@ -1,0 +1,45 @@
+{
+  "name": "michaelnabil230/laravel-setting",
+  "description": "This package allows you to persists configs/setting for Laravel projects.",
+  "keywords": [
+    "laravel",
+    "setting",
+    "laravel-setting",
+    "json",
+    "database",
+    "db"
+  ],
+  "require": {
+    "php": "^7.3|^8.0",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "laravel/framework": "^8.19",
+    "phpunit/phpunit": "^9.3.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "MichaelNabil230\\LaravelSetting\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Michael Nabil",
+      "email": "michaelnabil926@gmail.com",
+      "homepage": "https://github.com/michaelnabil230",
+      "role": "Developer"
+    }
+  ],
+  "extra": {
+    "laravel": {
+      "providers": [
+        "MichaelNabil230\\LaravelSetting\\SettingServiceProvider"
+      ]
+    }
+  }
+}
