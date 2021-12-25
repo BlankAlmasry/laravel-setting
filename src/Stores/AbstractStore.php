@@ -1,6 +1,6 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting\Store;
+namespace MichaelNabil230\LaravelSetting\Stores;
 
 use Illuminate\Support\Arr;
 
@@ -8,9 +8,9 @@ use Illuminate\Support\Arr;
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  settings-for-laravel
+ * @package  laravel-setting
  */
-abstract class SettingStore
+abstract class AbstractStore
 {
     /**
      * Get a specific key from the settings data.

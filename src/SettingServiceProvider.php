@@ -3,17 +3,16 @@
 namespace MichaelNabil230\LaravelSetting;
 
 use Illuminate\Support\ServiceProvider;
-use MichaelNabil230\LaravelSetting\SettingManager;
-use MichaelNabil230\LaravelSetting\Store\SettingStore;
-use MichaelNabil230\LaravelSetting\Console\Commands\SetOrUpdateSetting;
 use MichaelNabil230\LaravelSetting\Console\Commands\ForgetSetting;
 use MichaelNabil230\LaravelSetting\Console\Commands\GetSetting;
+use MichaelNabil230\LaravelSetting\Console\Commands\SetOrUpdateSetting;
+use MichaelNabil230\LaravelSetting\Stores\AbstractStore;
 
 /**
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  settings-for-laravel
+ * @package  laravel-setting
  */
 class SettingServiceProvider extends ServiceProvider
 {
@@ -24,13 +23,16 @@ class SettingServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Bind the manager as a singleton on the container.
-        $this->app->singleton(SettingManager::class, function ($app) {
-            return new SettingManager($app);
+        $this->app->extend(SettingManager::class, function (SettingManager $manager, $app) {
+            foreach ($app['config']->get('setting.drivers', []) as $driver => $params) {
+                $manager->registerStore($driver, $params);
+            }
+
+            return $manager;
         });
 
         // Provide a shortcut to the SettingStore for injecting into classes.
-        $this->app->bind(SettingStore::class, function ($app) {
+        $this->app->bind(AbstractStore::class, function ($app) {
             return $app->make(SettingManager::class)->driver();
         });
 

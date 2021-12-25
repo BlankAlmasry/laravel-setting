@@ -1,6 +1,6 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting\Store;
+namespace MichaelNabil230\LaravelSetting\Stores;
 
 use Illuminate\Cache\CacheManager;
 use Illuminate\Support\Arr;
@@ -9,9 +9,9 @@ use Illuminate\Support\Arr;
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  settings-for-laravel
+ * @package  laravel-setting
  */
-class DatabaseSettingStore extends SettingStore
+class DatabaseSettingStore extends AbstractStore
 {
     /** @var string */
     public static $cacheKey = 'setting.cache';
@@ -75,18 +75,18 @@ class DatabaseSettingStore extends SettingStore
     /**
      * SettingStore constructor.
      *
-     * @param array $config
+     * @param array $options
      * @param \Illuminate\Cache\CacheManager $cache
      *
      * @return void
      */
-    public function __construct($config, CacheManager $cache)
+    public function __construct($options = [], CacheManager $cache)
     {
-        $this->model = $config['model'];
+        $this->model = $options['model'];
         $this->cache = $cache;
-        $this->enableCache = $config['cache']['enableCache'] ?: true;
-        $this->cacheTtl = $config['cache']['cacheTtl'] ?: 15;
-        $this->cacheForgetOnWrite = $config['cache']['forgetCacheByWrite'] ?: true;
+        $this->enableCache = $options['cache']['enableCache'] ?: true;
+        $this->cacheTtl = $options['cache']['cacheTtl'] ?: 15;
+        $this->cacheForgetOnWrite = $options['cache']['forgetCacheByWrite'] ?: true;
     }
 
     /**

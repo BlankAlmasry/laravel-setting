@@ -2,19 +2,16 @@
 
 namespace MichaelNabil230\LaravelSetting;
 
-use Illuminate\Support\Manager;
-use MichaelNabil230\LaravelSetting\Store\DatabaseSettingStore;
-use MichaelNabil230\LaravelSetting\Store\JsonSettingStore;
+use Illuminate\Support\{Arr, Manager};
 
 /**
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  settings-for-laravel
+ * @package  laravel-setting
  */
 class SettingManager extends Manager
 {
-
     /**
      * Get the default driver name.
      *
@@ -25,21 +22,20 @@ class SettingManager extends Manager
         return $this->config->get('setting.default', 'json');
     }
 
-    public function createJsonDriver()
+    /**
+     * Register a new store.
+     *
+     * @param string $driver
+     * @param array $params
+     *
+     * @return $this
+     */
+    public function registerStore(string $driver, array $params)
     {
-        $path = $this->config->get('setting.drivers.json.path', storage_path('setting.json'));
-
-        $store = new JsonSettingStore($path, $this->container['files']);
-
-        return $store;
-    }
-
-    public function createDatabaseDriver()
-    {
-        $database = $this->config->get('setting.drivers.database');
-
-        $store = new DatabaseSettingStore($database, $this->container['cache']);
-
-        return $store;
+        return $this->extend($driver, function () use ($params) {
+            return $this->container->make($params['driver'], [
+                'options' => Arr::get($params, 'options', []),
+            ]);
+        });
     }
 }

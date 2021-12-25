@@ -1,6 +1,6 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting\Store;
+namespace MichaelNabil230\LaravelSetting\Stores;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Arr;
@@ -10,12 +10,23 @@ use RuntimeException;
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  settings-for-laravel
+ * @package  laravel-setting
  */
-class JsonSettingStore extends SettingStore
+class JsonSettingStore extends AbstractStore
 {
-    /** @var  string */
-    protected $path;
+    /**
+     * The path.
+     *
+     * @var array
+     */
+    protected $path = [];
+
+    /**
+     * The files.
+     *
+     * @var Filesystem
+     */
+    protected $files = null;
 
     /**
      * The settings data.
@@ -25,39 +36,28 @@ class JsonSettingStore extends SettingStore
     protected $data = [];
 
     /**
-     * @param string $path
-     * @param \Illuminate\Filesystem\Filesystem $files
+     * @param array $options
+     * @param Filesystem $files
      *
      * @return void
      */
-    public function __construct($path = null, Filesystem $files)
+    public function __construct($options = [], Filesystem $files)
     {
-        $this->files = $files;
-        $this->setPath($path);
-    }
+        $path = $this->path = $options['path'];
 
-    /**
-     * Set the storage path for the json file.
-     *
-     * @param string $path
-     *
-     * @return self
-     */
-    private function setPath($path)
-    {
+        $this->files = $files;
+
         // If the file does not already exist, we will attempt to create it.
-        if (!$this->files->exists($path)) {
-            $result = $this->files->put($path, '{}');
+        if (!$files->exists($path)) {
+            $result = $files->put($path, '{}');
             if ($result === false) {
                 throw new \InvalidArgumentException("Could not write to $path.");
             }
         }
 
-        if (!$this->files->isWritable($path)) {
+        if (!$files->isWritable($path)) {
             throw new \InvalidArgumentException("$path is not writable.");
         }
-
-        $this->path = $path;
     }
 
     /**

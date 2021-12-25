@@ -4,7 +4,7 @@
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  settings-for-laravel
+ * @package  laravel-setting
  */
 
 if (!function_exists('setting')) {
@@ -14,11 +14,11 @@ if (!function_exists('setting')) {
      * @param string|array|null $key
      * @param string|null $default
      *
-     * @return \MichaelNabil230\LaravelSetting\Store\SettingStore
+     * @return \MichaelNabil230\LaravelSetting\Stores\AbstractStore
      */
     function setting($key = null, $default = null)
     {
-        $setting = app(MichaelNabil230\LaravelSetting\Store\SettingStore::class);
+        $setting = app(MichaelNabil230\LaravelSetting\Stores\AbstractStore::class);
 
         if (is_array($key)) {
             $setting->set($key);

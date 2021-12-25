@@ -5,6 +5,12 @@ namespace MichaelNabil230\LaravelSetting\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 
+/**
+ *
+ * @author   Michael Nabil <michaelnabil926@gmail.com>
+ * @license  http://opensource.org/licenses/MIT
+ * @package  laravel-setting
+ */
 class GetSetting extends Command
 {
     /**
@@ -46,6 +52,21 @@ class GetSetting extends Command
     }
 
     /**
+     * Format settings befor print.
+     *
+     * @param array $settings
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    private function formatSetting($settings)
+    {
+        return collect($settings)
+            ->map(function ($value, $key) {
+                return ['key' => $key, 'value' => $value];
+            });
+    }
+
+    /**
      * Print the settings in screen.
      *
      * @param \Illuminate\Support\Collection $setting
@@ -67,20 +88,5 @@ class GetSetting extends Command
         } else {
             $this->error('There is no values');
         }
-    }
-
-    /**
-     * Format settings befor print.
-     *
-     * @param array $settings
-     *
-     * @return \Illuminate\Support\Collection
-     */
-    private function formatSetting($settings)
-    {
-        return collect($settings)
-            ->map(function ($value, $key) {
-                return ['key' => $key, 'value' => $value];
-            });
     }
 }

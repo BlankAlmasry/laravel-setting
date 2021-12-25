@@ -4,6 +4,12 @@ namespace MichaelNabil230\LaravelSetting\Console\Commands;
 
 use Illuminate\Console\Command;
 
+/**
+ *
+ * @author   Michael Nabil <michaelnabil926@gmail.com>
+ * @license  http://opensource.org/licenses/MIT
+ * @package  laravel-setting
+ */
 class ForgetSetting extends Command
 {
     /**
@@ -30,7 +36,7 @@ class ForgetSetting extends Command
         $key = $this->argument('key');
 
         $setting = setting();
-        
+
         if ($setting->has($key)) {
             if ($setting->forget($key)) {
                 $this->info('Forget one or more settings successfully.');
