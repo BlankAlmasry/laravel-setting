@@ -47,8 +47,7 @@ setting(['foo' => 'bar'])->save();
 
 ```
 php artisan setting:forget foo
-php artisan setting:all
-php artisan setting:get foo
+php artisan setting:get || php artisan setting:get foo
 php artisan setting:set-or-update foo bar
 ```
 

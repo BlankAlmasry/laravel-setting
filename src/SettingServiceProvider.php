@@ -7,8 +7,7 @@ use MichaelNabil230\LaravelSetting\SettingManager;
 use MichaelNabil230\LaravelSetting\Store\SettingStore;
 use MichaelNabil230\LaravelSetting\Console\Commands\SetOrUpdateSetting;
 use MichaelNabil230\LaravelSetting\Console\Commands\ForgetSetting;
-use MichaelNabil230\LaravelSetting\Console\Commands\GetAllSetting;
-use MichaelNabil230\LaravelSetting\Console\Commands\GetOnlySetting;
+use MichaelNabil230\LaravelSetting\Console\Commands\GetSetting;
 
 /**
  *
@@ -49,9 +48,8 @@ class SettingServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->commands([
-            GetAllSetting::class,
+            GetSetting::class,
             ForgetSetting::class,
-            GetOnlySetting::class,
             SetOrUpdateSetting::class,
         ]);
 

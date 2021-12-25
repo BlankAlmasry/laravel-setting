@@ -18,7 +18,7 @@ class SetOrUpdateSetting extends Command
      *
      * @var string
      */
-    protected $description = 'Set new or update key and value of an item in the setting.';
+    protected $description = 'Set new or update value of an item in the setting.';
 
     /**
      * Execute the console command.
@@ -30,12 +30,12 @@ class SetOrUpdateSetting extends Command
         $key = $this->argument('key');
         $value = $this->argument('value');
 
-        setting()->set($key, $value)->save();
+        $setting = setting()->set($key, $value)->save();
 
-        if (setting()->has($key)) {
-            $this->info('inserted ' . $key . ' a new setting successfully.');
+        if ($setting->has($key)) {
+            $this->info('Insert ' . $key . ' into a new setting successfully.');
         } else {
-            $this->info('updated ' . $key . ' setting successfully.');
+            $this->info('Updated ' . $key . ' setting successfully.');
         }
     }
 }

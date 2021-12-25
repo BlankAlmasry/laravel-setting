@@ -29,8 +29,10 @@ class ForgetSetting extends Command
     {
         $key = $this->argument('key');
 
-        if (setting()->has($key)) {
-            if (setting()->forget($key)) {
+        $setting = setting();
+        
+        if ($setting->has($key)) {
+            if ($setting->forget($key)) {
                 $this->info('Forget one or more settings successfully.');
             } else {
                 $this->error('Error.');
