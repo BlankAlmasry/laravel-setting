@@ -29,7 +29,7 @@ return new class extends Migration {
             $table->id();
             $table->string($this->keyColumn);
             $table->text($this->valueColumn);
-            // Your coustem filld
+            // Custom fields
             $table->timestamps();
         });
     }
